@@ -13,8 +13,8 @@ import math
 class Player(spgl.Sprite):
     def __init__(self, shape, color, x, y):
         spgl.Sprite.__init__(self, shape, color, x, y)
-        inventory = []
-        HP = 20
+        self.inventory = []
+        self.HP = 20
         
     def go_right(self):
         self.setheading(0)
@@ -53,12 +53,10 @@ class Enemy(spgl.Sprite):
 
     def move(self):
         if self.is_mobile == True:
-            if self.collided == False:
-                pass
-            
-
-            
-
+            for coordinate in wall_coordinates:
+                if is_wall_collision(self, coordinate) == True:
+                    self.setheading(self.heading() + 180)
+            self.fd(2)
         
     def tick(self):
         self.move()
@@ -66,6 +64,16 @@ class Enemy(spgl.Sprite):
 class Scenery(spgl.Sprite):
     def __init__(self, shape, color, x, y):
         spgl.Sprite.__init__(self, shape, color, x, y)
+    
+    def click(self, x, y):
+        distance = math.sqrt((self.xcor()-player.xcor()) ** 2 + (self.ycor()-player.ycor()) ** 2)
+        if distance > 30:
+           print("Got it!")
+           #moves into inventory
+           player.inventory.append(self)
+           self.setposition(-300, -250)
+        else:
+            print("Too far away")
         
 
 class Borders(spgl.Sprite):
@@ -129,11 +137,11 @@ def is_wall_collision(sprite, coordinates):
     #for some reason it's triggering with -30 as y-cor when it's nowhere near -30. The wall centers should be -70.
     x_collision = (math.fabs(sprite.xcor() - (coordinates[0] * 2)) < (sprite.width + 5))
     y_collision = (math.fabs(sprite.ycor() - (coordinates[1] * 2)) < (sprite.height + 5))
-    if (x_collision and y_collision) == True:
-        print(sprite.xcor(), sprite.ycor())
-        print(coordinates)
-        print(math.fabs(sprite.xcor() - (coordinates[0] * 2)))
-        print(math.fabs(sprite.ycor() - (coordinates[1] * 2)))
+    # if (x_collision and y_collision) == True:
+    #     print(sprite.xcor(), sprite.ycor())
+    #     print(coordinates)
+    #     print(math.fabs(sprite.xcor() - (coordinates[0] * 2)))
+    #     print(math.fabs(sprite.ycor() - (coordinates[1] * 2)))
     return (x_collision and y_collision)
 
 
@@ -143,6 +151,9 @@ menu_borders = Borders("square", "red", 0, 0)
 maze_borders = Borders("square", "red", 0, 0)
 
 coffin = Scenery("square", "blue", 200, 200)
+
+red_key = Scenery("turtle", "red", -485, 0)
+blue_key = Scenery("turtle", "blue", 485, -20)
 
 #moving objects
 player = Player("circle", "red", -485, -90)
