@@ -1,16 +1,7 @@
-# SPGL Minimal Code by /u/wynand1004 AKA @TokyoEdTech
+# The Blind Guardian's Crypt by Melissa Robertson
 # Requires SPGL Version 0.8 or Above
 # SPGL Documentation on Github: https://wynand1004.github.io/SPGL
-# Game Made by Melissa Robertson
-
-
-#Things left to do:
-#licenses + attributions
-
-#What needs Attribution:
-#-Tomb Guard and Guard Images
-# Elf Warrior - https://thierrycravatte.deviantart.com/art/Archer-4-524413762
-
+# See README file for graphics and music attribution
 
 #Importing Modules
 import spgl
