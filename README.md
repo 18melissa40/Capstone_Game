@@ -8,4 +8,4 @@ guard.gif and master_guard.gif - DitzyDM and Traipse OpenRPG (https://opengamear
 player_icon.gif - ThierryCravatte (https://thierrycravatte.deviantart.com/art/Archer-4-524413762)
 
 # Music Credits:
-#All music by Izioq and free to use in non-commercial games. Bandcamp: https://izioq.bandcamp.com/
+All music by Izioq and free to use in non-commercial games. Bandcamp: https://izioq.bandcamp.com/
